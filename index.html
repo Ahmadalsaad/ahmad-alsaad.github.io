@@ -1,0 +1,289 @@
+import React, { useState } from 'react';
+import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Code, Briefcase, GraduationCap, Languages, Award } from 'lucide-react';
+
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState('about');
+
+  const projects = [
+    {
+      title: "Backend Platform Development",
+      tech: "Node.js, Express, MongoDB",
+      description: "Developed backend platform improving system scalability by 30%",
+      year: "2024"
+    },
+    {
+      title: "Responsive UI Components",
+      tech: "React, Figma, CSS3",
+      description: "Built responsive front-end interfaces serving 1,000+ active users",
+      year: "2024"
+    },
+    {
+      title: "Interactive Web Applications",
+      tech: "React, HTML5, CSS3",
+      description: "Developed 3+ interactive web applications increasing engagement by 30%",
+      year: "2023-2024"
+    },
+    {
+      title: "Data Visualization Dashboard",
+      tech: "JavaScript, REST APIs",
+      description: "Led 4-person team to build data visualization dashboard",
+      year: "2023-2024"
+    }
+  ];
+
+  const skills = {
+    "Programming Languages": ["React", "HTML5", "CSS3", "JavaScript", "Responsive Design"],
+    "Design & Multimedia": ["UI/UX Prototyping", "Graphic Design", "Motion Graphics", "Video Editing"],
+    "Tools & Practices": ["Git", "VS Code", "Agile", "Project Planning", "Microsoft Office"]
+  };
+
+  const experience = [
+    {
+      title: "Junior Software Developer Intern",
+      company: "Tech Solutions Co.",
+      period: "Summer 2024",
+      achievements: [
+        "Developed backend platform using Node.js, Express.js, and MySQL",
+        "Improved system scalability by 30%",
+        "Built responsive front-end interfaces from Figma designs",
+        "Served 1,000+ active users"
+      ]
+    },
+    {
+      title: "IT & Network Support Assistant",
+      company: "University Networks",
+      period: "Jan 2024 - Present",
+      achievements: [
+        "Configured VMs and network infrastructure for 100+ students",
+        "Achieved 95% first-contact resolution",
+        "Maintained campus network equipment",
+        "Ensured 99% uptime for academic operations"
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      {/* Header */}
+      <header className="fixed top-0 w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-blue-500/20">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <nav className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              Ahmad Al-Saad
+            </h1>
+            <div className="flex gap-6">
+              {['about', 'experience', 'projects', 'skills', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => setActiveSection(section)}
+                  className={`capitalize transition-colors ${
+                    activeSection === section
+                      ? 'text-blue-400'
+                      : 'text-gray-300 hover:text-blue-300'
+                  }`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Full-Stack Developer
+            </h2>
+            <p className="text-xl text-gray-300 mb-6">
+              Information Engineering Student | UI/UX Enthusiast
+            </p>
+            <div className="flex justify-center gap-6 text-gray-400 mb-8">
+              <div className="flex items-center gap-2">
+                <MapPin size={18} />
+                <span>Syria, Aleppo</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone size={18} />
+                <span>+963 935-522-365</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail size={18} />
+                <span>alsaadra@gmail.com</span>
+              </div>
+            </div>
+          </div>
+
+          {/* About Section */}
+          {activeSection === 'about' && (
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 animate-fadeIn">
+              <div className="flex items-center gap-3 mb-6">
+                <Code className="text-blue-400" size={28} />
+                <h3 className="text-3xl font-bold">About Me</h3>
+              </div>
+              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                Dedicated third-year Information Engineering student with hands-on experience in full-stack 
+                development using Node.js, React, MySQL, and a passion for creating intuitive UI/UX designs. 
+                Eager to contribute technical skills and a collaborative mindset to a software engineering or web 
+                development internship.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                <div className="bg-slate-900/50 p-4 rounded-lg border border-blue-500/10">
+                  <h4 className="text-blue-400 font-semibold mb-2">Education</h4>
+                  <p className="text-gray-300">University of Aleppo</p>
+                  <p className="text-sm text-gray-400">Faculty of Informatics Engineering</p>
+                  <p className="text-sm text-gray-400">Third Year | GPA: 3.3/4.0</p>
+                </div>
+                <div className="bg-slate-900/50 p-4 rounded-lg border border-blue-500/10">
+                  <h4 className="text-blue-400 font-semibold mb-2">Languages</h4>
+                  <p className="text-gray-300">Arabic: Native Proficiency</p>
+                  <p className="text-gray-300">English: Professional Working Proficiency</p>
+                  <p className="text-sm text-gray-400">(Written & Spoken)</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Experience Section */}
+          {activeSection === 'experience' && (
+            <div className="space-y-6 animate-fadeIn">
+              <div className="flex items-center gap-3 mb-6">
+                <Briefcase className="text-blue-400" size={28} />
+                <h3 className="text-3xl font-bold">Work Experience</h3>
+              </div>
+              {experience.map((job, index) => (
+                <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-500/40 transition-all">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="text-2xl font-bold text-blue-400">{job.title}</h4>
+                      <p className="text-lg text-gray-300">{job.company}</p>
+                    </div>
+                    <span className="text-gray-400 bg-slate-900/50 px-4 py-2 rounded-lg">{job.period}</span>
+                  </div>
+                  <ul className="space-y-2">
+                    {job.achievements.map((achievement, i) => (
+                      <li key={i} className="text-gray-300 flex items-start gap-2">
+                        <span className="text-blue-400 mt-1">▹</span>
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Projects Section */}
+          {activeSection === 'projects' && (
+            <div className="animate-fadeIn">
+              <div className="flex items-center gap-3 mb-6">
+                <ExternalLink className="text-blue-400" size={28} />
+                <h3 className="text-3xl font-bold">Projects</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {projects.map((project, index) => (
+                  <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all hover:transform hover:scale-105">
+                    <div className="flex justify-between items-start mb-3">
+                      <h4 className="text-xl font-bold text-blue-400">{project.title}</h4>
+                      <span className="text-xs text-gray-400 bg-slate-900/50 px-3 py-1 rounded-full">{project.year}</span>
+                    </div>
+                    <p className="text-sm text-cyan-400 mb-3">{project.tech}</p>
+                    <p className="text-gray-300">{project.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Skills Section */}
+          {activeSection === 'skills' && (
+            <div className="animate-fadeIn">
+              <div className="flex items-center gap-3 mb-6">
+                <Award className="text-blue-400" size={28} />
+                <h3 className="text-3xl font-bold">Technical Skills</h3>
+              </div>
+              <div className="space-y-6">
+                {Object.entries(skills).map(([category, items]) => (
+                  <div key={category} className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20">
+                    <h4 className="text-xl font-bold text-blue-400 mb-4">{category}</h4>
+                    <div className="flex flex-wrap gap-3">
+                      {items.map((skill, index) => (
+                        <span key={index} className="bg-slate-900/50 px-4 py-2 rounded-lg text-gray-300 border border-blue-500/20 hover:border-blue-500/40 transition-colors">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Contact Section */}
+          {activeSection === 'contact' && (
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 animate-fadeIn">
+              <div className="flex items-center gap-3 mb-6">
+                <Mail className="text-blue-400" size={28} />
+                <h3 className="text-3xl font-bold">Get In Touch</h3>
+              </div>
+              <p className="text-lg text-gray-300 mb-8">
+                I'm currently looking for new opportunities and my inbox is always open. 
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="mailto:alsaadra@gmail.com" className="flex items-center gap-3 bg-slate-900/50 p-4 rounded-lg border border-blue-500/20 hover:border-blue-500/40 transition-all hover:transform hover:scale-105">
+                  <Mail className="text-blue-400" size={24} />
+                  <div>
+                    <p className="text-sm text-gray-400">Email</p>
+                    <p className="text-gray-300">alsaadra@gmail.com</p>
+                  </div>
+                </a>
+                <a href="tel:+963935522365" className="flex items-center gap-3 bg-slate-900/50 p-4 rounded-lg border border-blue-500/20 hover:border-blue-500/40 transition-all hover:transform hover:scale-105">
+                  <Phone className="text-blue-400" size={24} />
+                  <div>
+                    <p className="text-sm text-gray-400">Phone</p>
+                    <p className="text-gray-300">+963 935-522-365</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-3 bg-slate-900/50 p-4 rounded-lg border border-blue-500/20">
+                  <MapPin className="text-blue-400" size={24} />
+                  <div>
+                    <p className="text-sm text-gray-400">Location</p>
+                    <p className="text-gray-300">Syria, Aleppo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-900/50 border-t border-blue-500/20 py-8">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <p className="text-gray-400">
+            © 2024 Ahmad Al-Saad. Built with React and Tailwind CSS.
+          </p>
+        </div>
+      </footer>
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-out;
+        }
+      `}</style>
+    </div>
+  );
+}
